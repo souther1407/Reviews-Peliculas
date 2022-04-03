@@ -1,0 +1,6 @@
+-- Mostrar las últimas reseñas en la home
+-- Poder filtrar las reseñas por categoria
+-- Poder crear una reseña si se esta registrado y logueado
+-- Poder crear usuarios nuevos
+-- Poder agragar nuevas películas a reseñar
+-- 
