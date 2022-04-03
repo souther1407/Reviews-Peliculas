@@ -7,7 +7,8 @@ const modelCategorias = (sequelize)=>{
 
         name:{
             type:DataTypes.STRING,
-            allowNull:false
+            allowNull:false,
+            unique:true,
         }
     },{
         freezeTableName:true,

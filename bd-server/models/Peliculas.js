@@ -6,7 +6,8 @@ const modelPeliculas = (sequelize)=>{
     return sequelize.define("movies",{
         title:{
             type:DataTypes.STRING,
-            allowNull:false
+            allowNull:false,
+            unique:true,
 
         },
         year:{
