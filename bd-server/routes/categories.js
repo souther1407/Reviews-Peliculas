@@ -2,13 +2,12 @@ const router = require("express").Router()
 const {categories} = require("../db")
 
 router.get("/",async (req,res)=>{
-    //TODO:obtener todas la categorias
+    
     const categorias = await categories.findAll()
     res.json(categorias)
 })
 
 router.post("/add",async (req,res)=>{
-    //TODO:añadir una categoria nueva
     const {name} = req.body
 
     try {

@@ -4,7 +4,6 @@ const {movies,categories,directors} = require("../db")
 
 router.get("/",async (req,res)=>{
     const {title,year,max} = req.query
-    //TODO:acceder al las peliculas en la base
     const results = await movies.findAll({
         where:{
            [Op.and]:{
@@ -39,7 +38,6 @@ router.get("/",async (req,res)=>{
 */ 
 router.post("/add",async (req,res)=>{
     const {title,year,description,img,genres,director} = req.body
-    //TODO: Agregar la pelicula a la base, devolver un success true si se pudo
 
     try {
         const newMovie = await movies.create({title,year,description,img})
