@@ -29,7 +29,7 @@ router.get("/",async (req,res)=>{
         "description":"apaa",
         "img":"http://sdas.com/apaa.png",
         "genres":["accion","suspense"],
-        "director":{
+        "director":{ //debe existir en la base
             "name":"Ignacio",
             "lastName":"Lestrada"
         }

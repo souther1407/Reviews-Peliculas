@@ -1,12 +1,13 @@
 const router = require("express").Router()
-const {movies,reviews} = require("../db")
+const {movies,reviews,conn} = require("../db")
 
 router.get("/:idPelicula",async (req,res)=>{
     const {idPelicula} = req.params
 
     //TODO:Obtener el listado de críticas asociadas a el id de la pélicula
-    const peliConReviews = await movies.findByPk(Number(idPelicula))
-    res.json(peliConReviews.getReviews())
+    const peliConReviews = await conn.models.movies.findByPk(Number(idPelicula))
+
+    res.json(await peliConReviews.getReviews())
 })
 
 /*

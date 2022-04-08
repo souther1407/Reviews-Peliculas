@@ -1,12 +1,13 @@
 
 const express = require("express")
-const {conn,users,categories,directors,movies} = require("./db")
+const {conn,users,categories,directors,movies,reviews} = require("./db")
 const server = express()
 
 const reviewsRouter = require("./routes/reviews")
 const moviesRouter = require("./routes/movies")
 const categoriesRouter = require("./routes/categories")
 const userRouter = require("./routes/user")
+const directorsRouter = require("./routes/directors")
 
 const morgan = require("morgan")
 
@@ -29,12 +30,12 @@ server.use("/reviews",reviewsRouter)
 server.use("/movies",moviesRouter)
 server.use("/categories",categoriesRouter)
 server.use("/user",userRouter)
-
+server.use("/directors",directorsRouter)
 
 server.listen(8080,async ()=>{
     await conn.sync({force:true})
     //Usuario de prueba
-    await users.create({name:"admin",password:"12345",date_sign_up:new Date().toUTCString()})
+    const userAdmin =await users.create({name:"admin",password:"12345",date_sign_up:new Date().toUTCString()})
     
     const categorias = ["accion","comedia","drama","ciencia ficcion"]
 
@@ -72,8 +73,16 @@ server.listen(8080,async ()=>{
     titanic.setDirector(jCameron)
     titanic.addCategories(titanicCategory1)
    
-    
-
+    //Reseñas de prueba
+    const review1 = await reviews.create({score:99,content:"La mejor peli del mundo :D",date_created:new Date().toUTCString()})
+    review1.setMovie(titanic)
+    review1.setUser(userAdmin)
+    const review2 = await reviews.create({score:10,content:"... Nah mentira, alta bosta",date_created:new Date().toUTCString()})
+    review2.setMovie(titanic)
+    review2.setUser(userAdmin)
+    const review3 = await reviews.create({score:99,content:"Aguante Tarantino :D",date_created:new Date().toUTCString()})
+    review3.setMovie(pulpFiction)
+    review3.setUser(userAdmin)
     console.log("server funcionando")
 })
 
