@@ -11,9 +11,8 @@ const CardPelicula = ({title,description,year,img,categories,director}) => {
             <span>{year}</span>
             <span>De {director.name} {director.lastName}</span>
           </div>
-
           <p>{description}</p>
-          
+
           <div className={styles.cardCategorias}>
             {categories.map(c=>{
               return <span>{c.name}</span>

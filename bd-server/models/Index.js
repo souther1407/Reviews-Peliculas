@@ -3,6 +3,7 @@ const modelPeliculas = require("./Peliculas");
 const modelDirectores = require("./Directores");
 const modelCriticas = require("./Reviews");
 const modelUsuarios = require("./Usuarios");
+const modelRolUsuario = require("./RolUsuario");
 
 module.exports = {
   modelCategorias,
@@ -10,4 +11,5 @@ module.exports = {
   modelDirectores,
   modelCriticas,
   modelUsuarios,
+  modelRolUsuario,
 };

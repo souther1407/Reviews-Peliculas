@@ -1,0 +1,15 @@
+.secciones{
+   display: flex;
+   align-items: center;
+}
+
+.secciones > .link{
+    margin: 8px;
+    color: var(--textLight);
+    text-decoration: none;
+}
+
+.categorias{
+    color: var(--textLight);
+    
+}

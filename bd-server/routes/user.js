@@ -1,6 +1,10 @@
 const router = require("express").Router();
-const { users } = require("../db");
+const jwt = require("jsonwebtoken");
+const { users, user_role } = require("../db");
+const { hashPassword } = require("../utils");
+require("dotenv").config();
 
+const { SECRET_KEY } = process.env;
 /*
     {
         "name":"lestra92",
@@ -12,7 +16,8 @@ router.post("/add", async (req, res) => {
   const { name, password } = req.body;
 
   const newUser = await users.create({ name, password, date_sign_up: new Date().toUTCString() });
-
+  const userRole = await user_role.findOne({raw: true, where: { name: "user" } });
+  newUser.setUser_role(userRole.id);
   res.status(201).json({ success: true });
 });
 
@@ -27,8 +32,23 @@ router.get("/exist", async (req, res) => {
   res.json({ existe: existe.length > 0 });
 });
 
-router.get("/correct", (req, res) => {
+router.post("/login", async (req, res) => {
   // TODO:devolver si las credenciales son correctas
+  const { user, password } = req.body;
+
+  const existeUsuario = await users.findOne({
+    where: {
+      name: user, password: hashPassword(password),
+    },
+  });
+
+  if (existeUsuario) {
+    return res.json({
+      success: true,
+      token: jwt.sign({ id: existeUsuario.id }, SECRET_KEY),
+    });
+  }
+  res.json({ success: false });
 });
 
 module.exports = router;

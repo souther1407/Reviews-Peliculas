@@ -1,6 +1,7 @@
--- Mostrar las péliculas mejor reseñadas
--- Poder filtrar las reseñas por categoria
--- Poder crear una reseña si se esta registrado y logueado
--- Poder crear usuarios nuevos
--- Poder agragar nuevas películas a reseñar
+-- Mostrar las péliculas mejor reseñadas(todos)
+-- poder loguearse(todos)
+-- Poder filtrar las reseñas por categoria (check) (todos)
+-- Poder crear una reseña si se esta registrado y logueado(usuario)
+-- Poder crear usuarios nuevos (administrador)
+-- Poder agragar nuevas películas a reseñar(administrador)
 

@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const { categories } = require("../db");
+const { esAdmin, loggeado } = require("../middlewares")
 
-router.get("/", async (req, res) => {
+router.get("/", loggeado, esAdmin, async (req, res) => {
   const categorias = await categories.findAll();
   res.json(categorias);
 });

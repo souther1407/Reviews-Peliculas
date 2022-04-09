@@ -28,6 +28,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Peliculas />} />
           <Route path='*' element={<h1>404</h1>} />
+          <Route path='/categorias/:categoria' element={<Peliculas />} />
         </Routes>
       </div>
     </ThemeProvider>

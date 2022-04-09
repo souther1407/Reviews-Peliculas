@@ -1,7 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const {
-  conn, users, categories, directors, movies, reviews,
+  conn, users, categories, directors, movies, reviews,user_role
 } = require("./db");
 
 const server = express();
@@ -34,9 +34,14 @@ server.use("/directors", directorsRouter);
 
 server.listen(8080, async () => {
   await conn.sync({ force: true });
+
+  //Roles iniciales
+  const admin = await user_role.create({ name: "admin" });
+  const usuario = await user_role.create({name:"user"});
+
   // Usuario de prueba
   const userAdmin = await users.create({ name: "admin", password: "12345", date_sign_up: new Date().toUTCString() });
-
+  userAdmin.setUser_role(admin);
   const categorias = ["accion", "comedia", "drama", "ciencia ficcion"];
 
   // Categorias de prueba

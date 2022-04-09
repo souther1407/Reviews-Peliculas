@@ -1,0 +1,42 @@
+
+.categorias{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: inherit;
+    
+}
+
+.categoriasBtn{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 4px;
+    
+}
+
+#icon{
+    align-self: flex-end;
+}
+
+.listadoCategorias{
+    position: absolute;
+    display: flex;
+    border-top: 1px solid var(--primaryLight);
+    flex-direction: column;
+    top:100%;
+    text-align: center;
+    background-color: var(--primary);
+    padding: 8px;
+   
+}
+
+.listadoCategorias > * {
+    text-decoration: none;
+    margin-bottom: 8px;
+    color:var(--textLight)
+}
+
+.oculto{
+    display: none;
+}

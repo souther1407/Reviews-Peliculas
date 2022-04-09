@@ -1,10 +1,14 @@
 const router = require("express").Router();
 const { Op } = require("sequelize");
+const { categoryBelongs } = require("../utils");
+
 const { movies, categories, directors, reviews, conn } = require("../db");
 
 router.get("/", async (req, res) => {
-  const { title, year, max } = req.query;
-  const results = await movies.findAll({
+
+  const { title, year, max, category } = req.query;
+
+  let results = await movies.findAll({
     where: {
       [Op.and]: {
         title: {
@@ -16,21 +20,9 @@ router.get("/", async (req, res) => {
     include: [directors, categories],
     limit: max || 30,
   });
-
+  if (category) results = results.filter(r => categoryBelongs(r.categories, category));
   res.json({ cantidad_resultados: results.length, results });
 });
-
-/* router.get("/top10", async (req, res) => {
-  let { orderBy } = req.query;
-  if (!orderBy) orderBy = "cantReviews";
-  switch (orderBy) {
-    case "cantReviews": {
-      const top10 = await movies.findAll({ include: reviews, group: ["id"] });
-    }
-
-    default: return res.sendStatus(400);
-  }
-}); */
 
 /*
     {

@@ -3,7 +3,12 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 
 const {
-  modelPeliculas, modelCategorias, modelDirectores, modelCriticas, modelUsuarios,
+  modelPeliculas,
+  modelCategorias,
+  modelDirectores,
+  modelCriticas,
+  modelUsuarios,
+  modelRolUsuario,
 } = require("./models");
 
 const {
@@ -31,6 +36,9 @@ modelos.push(Criticas);
 const Usuarios = modelUsuarios(db);
 modelos.push(Usuarios);
 
+const RolUsuario = modelRolUsuario(db);
+modelos.push(RolUsuario);
+
 Categorias.belongsToMany(Peliculas, { through: "categories_movies_belongs", timestamps: false });
 Peliculas.belongsToMany(Categorias, { through: "categories_movies_belongs", timestamps: false });
 
@@ -42,6 +50,9 @@ Criticas.belongsTo(Peliculas);
 
 Usuarios.hasMany(Criticas);
 Criticas.belongsTo(Usuarios);
+
+RolUsuario.hasMany(Usuarios);
+Usuarios.belongsTo(RolUsuario);
 
 const obj = {
   ...db.models,
