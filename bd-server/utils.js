@@ -1,12 +1,10 @@
-require("dotenv").config()
-const {createHash} = require("crypto")
-const {SECRET_KEY} = process.env
+require("dotenv").config();
+const { createHash } = require("crypto");
 
-const hashPassword=(value)=>{
-    return createHash("sha256").update(value+SECRET_KEY).digest("hex")
-}
+const { SECRET_KEY } = process.env;
 
+const hashPassword = (value) => createHash("sha256").update(value + SECRET_KEY).digest("hex");
 
 module.exports = {
-    hashPassword
-}
+  hashPassword,
+};

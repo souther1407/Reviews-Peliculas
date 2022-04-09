@@ -1,0 +1,7 @@
+.peliculas{
+    margin-top: 32px;
+    background-color: var(--primaryDark);
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+}

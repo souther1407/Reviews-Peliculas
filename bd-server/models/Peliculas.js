@@ -1,32 +1,28 @@
+const { DataTypes } = require("sequelize");
 
-const { DataTypes } = require("sequelize")
+const modelPeliculas = (sequelize) => sequelize.define("movies", {
+  title: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
 
+  },
+  year: {
+    type: DataTypes.INTEGER,
+  },
+  description: {
+    type: DataTypes.STRING(512),
+  },
+  img: {
+    type: DataTypes.STRING,
+    validate: {
+      isUrl: true,
+    },
+  },
 
-const modelPeliculas = (sequelize)=>{
-    return sequelize.define("movies",{
-        title:{
-            type:DataTypes.STRING,
-            allowNull:false,
-            unique:true,
+}, {
+  freezeTableName: true,
+  timestamps: false,
+});
 
-        },
-        year:{
-            type:DataTypes.INTEGER
-        },
-        description:{
-            type:DataTypes.STRING(512)
-        },
-        img:{
-            type:DataTypes.STRING,
-            validate:{
-                isUrl:true
-            }
-        }
-
-    },{
-        freezeTableName:true,
-        timestamps:false
-    })
-}
-
-module.exports = modelPeliculas
+module.exports = modelPeliculas;

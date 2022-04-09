@@ -1,52 +1,52 @@
-require("dotenv").config()
+require("dotenv").config();
 
-const {Sequelize} = require("sequelize")
+const { Sequelize } = require("sequelize");
 
-
-const {modelPeliculas,modelCategorias,modelDirectores,modelCriticas,modelUsuarios} = require("./models")
 const {
-    DB_USER, DB_PASSWORD, DB_HOST,DB_NAME
-  } = process.env;
-  
+  modelPeliculas, modelCategorias, modelDirectores, modelCriticas, modelUsuarios,
+} = require("./models");
 
-const db= new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:5432/${DB_NAME}`,{
-    logging:false
-})
+const {
+  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME,
+} = process.env;
 
-const modelos = []
+const db = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:5432/${DB_NAME}`, {
+  logging: false,
+});
 
-const Categorias = modelCategorias(db)
-modelos.push(Categorias)
+const modelos = [];
 
-const Peliculas = modelPeliculas(db)
-modelos.push(Peliculas)
+const Categorias = modelCategorias(db);
+modelos.push(Categorias);
 
-const Directores = modelDirectores(db)
-modelos.push(Directores)
+const Peliculas = modelPeliculas(db);
+modelos.push(Peliculas);
 
-const Criticas = modelCriticas(db)
-modelos.push(Criticas)
+const Directores = modelDirectores(db);
+modelos.push(Directores);
 
-const Usuarios = modelUsuarios(db)
-modelos.push(Usuarios)
+const Criticas = modelCriticas(db);
+modelos.push(Criticas);
 
-Categorias.belongsToMany(Peliculas,{through:"categories_movies_belongs",timestamps:false})
-Peliculas.belongsToMany(Categorias,{through:"categories_movies_belongs",timestamps:false})
+const Usuarios = modelUsuarios(db);
+modelos.push(Usuarios);
 
-Directores.hasMany(Peliculas)
-Peliculas.belongsTo(Directores)
+Categorias.belongsToMany(Peliculas, { through: "categories_movies_belongs", timestamps: false });
+Peliculas.belongsToMany(Categorias, { through: "categories_movies_belongs", timestamps: false });
 
-Peliculas.hasMany(Criticas)
-Criticas.belongsTo(Peliculas)
+Directores.hasMany(Peliculas);
+Peliculas.belongsTo(Directores);
 
-Usuarios.hasMany(Criticas)
-Criticas.belongsTo(Usuarios)
+Peliculas.hasMany(Criticas);
+Criticas.belongsTo(Peliculas);
 
-const obj={
-    ...db.models
-}
+Usuarios.hasMany(Criticas);
+Criticas.belongsTo(Usuarios);
+
+const obj = {
+  ...db.models,
+};
 module.exports = {
-    conn:db,
-    ...obj
-}
-
+  conn: db,
+  ...obj,
+};

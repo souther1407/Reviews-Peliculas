@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
+
 import CardPelicula from "../CardPelicula/CardPelicula"
+
 import {getMovies} from "../../redux/actions/actions"
+
+import styles from './peliculas.module.css'
+
 
 const Peliculas = () => {
 
@@ -15,9 +20,9 @@ const Peliculas = () => {
   
   
   return (
-    <div>
+    <div className={styles.peliculas}>
         {
-            pelis.movies.length > 0 && !pelis.loadingMovies
+            !pelis.loadingMovies
             ?
                
                pelis.movies.map(p=><CardPelicula
@@ -29,7 +34,7 @@ const Peliculas = () => {
                     categories={p.categories}
                     director={p.director}/>)
             :
-            pelis.loadingMovies ? <h1>Cargando</h1> : null        
+            <h1>Cargando...</h1>  
             
         }
     </div>

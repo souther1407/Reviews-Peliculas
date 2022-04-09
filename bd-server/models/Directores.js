@@ -1,22 +1,18 @@
-const { DataTypes } = require("sequelize")
+const { DataTypes } = require("sequelize");
 
+const modelDirectores = (sequelize) => sequelize.define("directors", {
 
-const modelDirectores = (sequelize)=>{
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  lastName: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+}, {
+  freezeTableName: true,
+  timestamps: false,
+});
 
-    return sequelize.define("directors",{
-
-        name:{
-            type:DataTypes.STRING,
-            allowNull:false
-        },
-        lastName:{
-            type:DataTypes.STRING,
-            allowNull:false
-        }
-    },{
-        freezeTableName:true,
-        timestamps:false
-    })
-}
-
-module.exports = modelDirectores
+module.exports = modelDirectores;

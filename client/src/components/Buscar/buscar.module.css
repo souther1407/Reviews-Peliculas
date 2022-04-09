@@ -1,0 +1,27 @@
+.buscar{
+    display: flex;
+}
+
+.buscarInput{
+    background: none;
+    color: var(--textLight);
+    border: none;
+    border-bottom: 1px solid blueviolet;
+    padding: 4px;
+    transition: background 0.3s ease-in-out;
+}
+
+.buscarInput:focus{
+    outline: none;
+    background-color: var(--primaryLight);
+}
+
+.buscarBtn{
+    background:none;
+    border: none;
+    border-bottom: 1px solid blueviolet;
+    color: aliceblue;
+    background-color: blueviolet;
+    padding: 0 4px;
+    cursor: pointer;
+}

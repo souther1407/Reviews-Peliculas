@@ -1,8 +1,12 @@
 import React from 'react'
+import Buscar from '../Buscar/Buscar'
+import styles from "./nav.module.css"
 
 const Nav = () => {
   return (
-    <div>Nav</div>
+    <nav className={styles.nav}>
+        <Buscar />
+    </nav>
   )
 }
 

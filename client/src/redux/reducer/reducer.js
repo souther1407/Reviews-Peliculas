@@ -3,7 +3,7 @@ import { GET_MOVIES,LOADING_MOVIES } from "../actions/names"
 
 const initState = {
     movies:[],
-    loadingMovies:false,
+    loadingMovies:true,
 }
 
 
