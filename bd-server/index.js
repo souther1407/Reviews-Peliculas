@@ -29,7 +29,7 @@ server.use((req, res, next) => {
 server.use("/reviews", reviewsRouter);
 server.use("/movies", moviesRouter);
 server.use("/categories", categoriesRouter);
-server.use("/user", userRouter);
+server.use("/users", userRouter);
 server.use("/directors", directorsRouter);
 
 server.listen(8080, async () => {

@@ -55,8 +55,7 @@ router.post("/add", async (req, res) => {
         },
       },
     });
-
-    const newMovieDirector = await directors.findAll({
+    const newMovieDirector = await directors.findOne({
       where: {
         name: director.name,
         lastName: director.lastName,
