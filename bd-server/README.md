@@ -25,6 +25,17 @@ permite agregar las categorias de las películas (mas adelante borrar y cambiar 
     devuelve: status 201 `{"id":1,"name":"accion"}`<br>
     error: status 400 `{error...}`<br>
 
+- ><span name="PUT" style="color:blue">PUT</span> /categories/:id
+    <p>modifica el nombre de una categoria</p>
+    recibe: `{"name":"accion"}`<br>
+    devuelve: status 201 `{success: true, msg: "categoria modificada "}`<br>
+    error: status 400 `{error...}`<br>
+
+- ><span name="DELETE" style="color:red">DELETE</span> /categories/:id
+    <p>borra una categoria por id</p>
+    devuelve: status 201 `{success: true, msg: "categoria borrada con éxito"}`<br>
+    error: status 400 `{error...}`<br>
+
 ### directores
 
 permite agregar  directores de las películas (mas adelante borrar y cambiar :D)

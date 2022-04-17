@@ -1,11 +1,10 @@
-const {
-    conn, users, categories, directors, movies, reviews,user_role
-  } = require("./db");
 
-const mockearData = async () => { 
-    //Roles iniciales
+const { users, categories, directors, movies, reviews, user_role } = require("./db");
+
+const mockearData = async () => {
+  //   Roles iniciales
   const admin = await user_role.create({ name: "admin" });
-  const usuario = await user_role.create({name:"user"});
+  const usuario = await user_role.create({ name: "user" });
 
   // Usuario de prueba
   const userAdmin = await users.create({ name: "admin", password: "12345", date_sign_up: new Date().toUTCString() });
@@ -59,6 +58,6 @@ const mockearData = async () => {
   const review3 = await reviews.create({ score: 99, content: "Aguante Tarantino :D", date_created: new Date().toUTCString() });
   review3.setMovie(pulpFiction);
   review3.setUser(userAdmin);
-}
+};
 
 module.exports = mockearData;

@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const { conn } = require("./db");
 
-const mockearData = require("./mockdata")
+const mockearData = require("./mockdata");
 const server = express();
 
 const reviewsRouter = require("./routes/reviews");
