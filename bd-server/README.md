@@ -40,7 +40,23 @@ permite agregar las categorias de las películas (mas adelante borrar y cambiar 
 
 permite agregar  directores de las películas (mas adelante borrar y cambiar :D)
 
-- ><span name="POST" style="color:blueviolet">POST</span> /director/add
+- ><span name="GET" style="color:gold">GET</span> /directors
+    <p>devuelve los directores </p>
+    devuelve: status 200`[
+        {
+        "id": 1,
+        "name": "Quentin",
+        "lastName": "Tarantino"
+        },
+        {
+        "id": 2,
+        "name": "James",
+        "lastName": "Cameron"
+        }
+    ]`
+
+
+- ><span name="POST" style="color:blueviolet">POST</span> /directors/add
     <p>agrega un nuevo director</p>
     recibe: `{
                 "name":"Ignacio",
@@ -49,10 +65,23 @@ permite agregar  directores de las películas (mas adelante borrar y cambiar :D)
     devuelve: status 201 `{ success: true, { id: 1, "name": "Ignacio", "lastName: "Lestrada" } }`<br>
     error: status 400 `{error...}`<br>
 
+- ><span name="PUT" style="color:blue">PUT</span> /directors/:id
+    <p>modifica un director por id </p>
+    recibe: `{
+                "name":"Ignacio",
+                "lastName:"Lestrada"
+            }`<br>
+    devuelve: status 201 `{success: true, msg: "director modificado con exito"}`<br>
+    error: status 400 `{error...}`<br>
+
+- ><span name="DELETE" style="color:red">DELETE</span> /directors/:id
+    <p>borra un director por id </p>
+    devuelve: status 201 `{success: true, msg: "director borrado"}`<br>
+    error: status 400 `{error...}`<br>
 
 ### peliculas
 
-permite leer y agragar nuevas películas,(mas adelante borrar y cambiar :D)
+permite leer y agragar nuevas películas, además de cambiar y eliminar
 
 
 - ><span name="GET" style="color:gold">GET</span> /movies <br>
@@ -136,6 +165,45 @@ permite leer y agragar nuevas películas,(mas adelante borrar y cambiar :D)
     }
     ```
 
+- ><span name="PUT" style="color:blue">PUT</span> /movies/:id
+    <p>modifica una película por id</p>
+
+    recibe:
+    ```json
+    {
+        "title":"ejemplo",
+        "year":1999,
+        "description":"apaa",
+        "img":"http://sdas.com/apaa.png",
+        "genres":["accion","suspense"],
+        "director":{ //debe existir en la base
+            "name":"Ignacio",
+            "lastName":"Lestrada"
+        }
+
+    }
+
+    ```
+    retorna: status 200
+
+    ```json
+
+        { "success": true, "msg": "pelicula modificada con éxito" }
+
+    ```
+
+
+
+
+- ><span name="DELETE" style="color:red">DELETE</span> /movies/:id
+    <p>Borra una película por id</p>
+    retorna:
+
+    ```json
+
+        { "success": true, "msg": "pelicula borrada con éxito" }
+
+    ```
 
 ### reviews
 
@@ -166,6 +234,57 @@ permite agregar y obtener reviews de una pelicula (mas adelante poder borrar y m
             "userId": 1
         }
     ]
+    ```
+
+- ><span name="POST" style="color:blueviolet">POST</span> /reviews/:idPelicula/add
+    <p>Agrega una review a una pelicula por id</p>
+
+    recibe:
+    ```json
+    {
+        "score": "99",
+        "content": "La mejor peli del mundo :D"
+
+    }
+    ```
+
+    retorna: status 201
+
+    ```json
+    {
+       "success": true
+    }
+    ```
+
+- ><span name="PUT" style="color:blue">PUT</span> /reviews/:id
+    <p>modifica una review por id</p>
+
+    recibe:
+    ```json
+    {
+        "score": "99",
+        "content": "La mejor peli del mundo :D"
+
+    }
+
+    ```
+    retorna: status 200
+
+    ```json
+
+        { "success": true}
+
+    ```
+
+
+
+
+- ><span name="DELETE" style="color:red">DELETE</span> /reviews/:id
+    <p>Borra una review por id</p>
+    retorna:
+    ```json
+        { "success": true, "msg":"pelicula borrada"}
+
     ```
 
 ### usuarios

@@ -18,6 +18,7 @@ router.post("/add", async (req, res) => {
   res.status(201).json({ success: true, newDirector });
 });
 
+
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { name, lastName } = req.body;
