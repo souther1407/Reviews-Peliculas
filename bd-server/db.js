@@ -57,6 +57,7 @@ Usuarios.belongsTo(RolUsuario);
 const obj = {
   ...db.models,
 };
+
 module.exports = {
   conn: db,
   ...obj,
