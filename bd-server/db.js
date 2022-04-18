@@ -45,7 +45,7 @@ Peliculas.belongsToMany(Categorias, { through: "categories_movies_belongs", time
 Directores.hasMany(Peliculas);
 Peliculas.belongsTo(Directores);
 
-Peliculas.hasMany(Criticas);
+Peliculas.hasMany(Criticas, { onDelete: "cascade" });
 Criticas.belongsTo(Peliculas);
 
 Usuarios.hasMany(Criticas);
