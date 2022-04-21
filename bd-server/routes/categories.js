@@ -22,8 +22,9 @@ router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
   try {
-    await categories.update({ name }, { where: { id: Number(id) } });
-    res.json({ success: true, msg: "categoria modificada" });
+    const [idCategoria] = await categories.update({ name }, { where: { id: Number(id) } });
+    const seModificoConExito = idCategoria !== 0;
+    res.json({ success: seModificoConExito, msg: seModificoConExito ? "categoria modificada" : "no existe la categoria con ese id" });
   } catch (error) {
     res.json({ success: false, error });
   }
@@ -32,8 +33,9 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    await categories.destroy({ where: { id } });
-    res.json({ success: true, msg: "categoria borrada con éxito" });
+    const idCategoria = await categories.destroy({ where: { id } });
+    const seBorroConExito = idCategoria !== 0;
+    res.json({ success: seBorroConExito, msg: seBorroConExito ? "categoria borrada con éxito" : "no existe la categoria con ese id" });
   } catch (error) {
     res.json({ success: false, error });
   }

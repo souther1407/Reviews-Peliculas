@@ -11,7 +11,6 @@ const esAdmin = (req, res, next) => {
     const user = await users.findByPk(data.id, { raw: true, include: user_role });
     if (user["user_role.name"] === "admin") return next();
     res.sendStatus(403);
-
   });
 };
 
