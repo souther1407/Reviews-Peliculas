@@ -40,6 +40,7 @@ router.post("/login", async (req, res) => {
     where: {
       name: user, password: hashPassword(password),
     },
+    include: user_role
   });
 
   if (existeUsuario) {
@@ -50,5 +51,17 @@ router.post("/login", async (req, res) => {
   }
   res.json({ success: false });
 });
+
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const idBorrado = await users.destroy({ where: { id } });
+    if (idBorrado === 0) return res.json({ success: false, notExist: true });
+    res.json({ success: true });
+  } catch (error) {
+    res.json({ success: false, error });
+  }
+});
+
 
 module.exports = router;
