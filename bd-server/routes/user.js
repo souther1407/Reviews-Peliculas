@@ -32,26 +32,6 @@ router.get("/exist", async (req, res) => {
   res.json({ existe: existe.length > 0 });
 });
 
-router.post("/login", async (req, res) => {
-  // TODO:devolver si las credenciales son correctas
-  const { user, password } = req.body;
-
-  const existeUsuario = await users.findOne({
-    where: {
-      name: user, password: hashPassword(password),
-    },
-    include: user_role
-  });
-
-  if (existeUsuario) {
-    return res.json({
-      success: true,
-      token: jwt.sign({ id: existeUsuario.id }, SECRET_KEY),
-    });
-  }
-  res.json({ success: false });
-});
-
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {

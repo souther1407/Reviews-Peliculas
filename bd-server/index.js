@@ -10,6 +10,7 @@ const moviesRouter = require("./routes/movies");
 const categoriesRouter = require("./routes/categories");
 const userRouter = require("./routes/user");
 const directorsRouter = require("./routes/directors");
+const authRouter = require("./routes/auth");
 
 server.use(express.json());
 
@@ -30,6 +31,7 @@ server.use("/movies", moviesRouter);
 server.use("/categories", categoriesRouter);
 server.use("/users", userRouter);
 server.use("/directors", directorsRouter);
+server.use("/auth", authRouter);
 
 server.listen(8080, async () => {
   await conn.sync({ force: true });

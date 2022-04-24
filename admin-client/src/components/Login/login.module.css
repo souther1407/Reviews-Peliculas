@@ -1,0 +1,38 @@
+.login{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px;
+    align-items: center;
+}
+
+
+.login > *{
+    margin-bottom: 32px;
+}
+
+.form{
+    border: 1px solid var(--primary);
+    padding: 32px;
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    border-radius: 4px;
+}
+
+.form > *{
+    margin-bottom: 32px;
+}
+
+
+@media screen and (max-width:400px) {
+    .form{
+       width: 100%;
+    }
+}
+@media screen and (max-width:700px) {
+    .form{
+       width: 70%;
+    }
+}

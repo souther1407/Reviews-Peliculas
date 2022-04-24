@@ -1,42 +1,74 @@
-.App {
-  text-align: center;
+.App{
+  position: fixed;
+  background-color: var(--bgDark);
+  color: var(--textLight);
+  top:0;
+  left:0;
+  height: 100%;
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+.row{
+  display: flex;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.column{
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.end{
+  justify-content: flex-end;
+}
+
+.center{
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.start{
+  justify-content: start;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.space-around{
+  justify-content: space-around;
+}
+
+.space-between{
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 600px) {
+  .m-row{
+    display: flex;
+  
   }
-  to {
-    transform: rotate(360deg);
+  
+  .m-column{
+    display: flex;
+    flex-direction: column;
   }
-}
+  
+  .m-end{
+    justify-content: flex-end;
+  }
+  
+  .m-center{
+    justify-content: center;
+  }
+  
+  .m-start{
+    justify-content: start;
+  }
+  
+  .m-space-around{
+    justify-content: space-around;
+  }
+  
+  .m-space-between{
+    justify-content: space-between;
+  }
 
-button {
-  font-size: calc(10px + 2vmin);
 }

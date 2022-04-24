@@ -1,0 +1,48 @@
+.input{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.input input{
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--primary);
+    padding: 8px 4px;
+    color: var(--textLight);
+    transition: all .5s;
+    width: 100%;
+    
+}
+
+
+.input label{
+    color: var(--textDark)
+}
+.input input:focus{
+    outline: none;
+    
+    
+}
+
+.inputWithIcon{
+    display: flex;   
+    
+}
+
+.inputWithIcon > input{
+    padding-right: 30px;
+    width: 100%;
+   
+}
+
+#input{
+    position: relative;
+}
+.icon{
+    position: absolute;
+    right: 4px;
+    top: 40%;
+    font-size: 24px;
+    color: var(--primary);
+}
